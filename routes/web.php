@@ -14,3 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post('/register','UserController@register');
+
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->get('/api', function ()    {
+        return 'ok';
+    });
+});
